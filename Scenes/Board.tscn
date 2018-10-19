@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scenes/GridContainer.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Board.gd" type="Script" id=1]
 
 [node name="Board" type="Control"]
 anchor_left = 0.0
@@ -34,5 +34,4 @@ columns = 9
 _sections_unfolded = [ "Anchor", "Rect", "Script", "Theme", "custom_constants" ]
 
 [node name="Walls" type="Node2D" parent="."]
-scale = Vector2( 1, 1 )
 

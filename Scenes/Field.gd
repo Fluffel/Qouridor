@@ -1,8 +1,13 @@
 extends ColorRect
 
 enum field_side{TOP, LEFT, BOTTOM, RIGHT}
+
+onready var board = get_parent().get_parent()
+
 var activated = false #if activated it will create a wall when right clicked 
 var field_pos = Vector2() #the position will be from 1 to 9 into x and y direction where on step is one field
+
+
 
 func _ready():
 	connect("mouse_entered", self, "_mouse_entered")
@@ -20,9 +25,8 @@ func _input(event):
 #		print(event)
 		if event is InputEventMouseButton:
 			if event.get_button_index() == BUTTON_LEFT and event.is_pressed():
-				print("yesman")
-				print("you clicked on the ", get_field_side(), "of the field")
 				print("field pos: ", field_pos)
+				board.place_wall(self, get_field_side())
 		
 func get_field_side():
 	#this function will check in which triangle of the color rect the mouse is located. The triangles would be obtained by drawing the diagonals.
