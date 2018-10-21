@@ -4,6 +4,7 @@ onready var board = get_parent().get_parent()
 enum moves{UP, RIGHT, DOWN, LEFT}
 
 var board_pos
+
 export var amount_walls = 10
 func _ready():
 	pass

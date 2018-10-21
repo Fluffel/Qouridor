@@ -15,8 +15,7 @@ _global_script_classes=[ {
 "path": "res://addons/AContainer.gd"
 } ]
 _global_script_class_icons={
-"AContainer": "",
-"AspectContainer": ""
+"AContainer": ""
 }
 
 [application]
