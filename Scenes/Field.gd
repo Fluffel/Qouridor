@@ -1,8 +1,7 @@
 extends ColorRect
 
-enum field_side{TOP, LEFT, BOTTOM, RIGHT}
 
-onready var board = get_parent().get_parent()
+onready var board = get_node("/root/Main/Board")
 
 var activated = false #if activated it will create a wall when right clicked 
 var field_pos = Vector2() #the position will be from 1 to 9 into x and y direction where on step is one field
@@ -25,7 +24,8 @@ func _input(event):
 #		print(event)
 		if event is InputEventMouseButton:
 			if event.get_button_index() == BUTTON_LEFT and event.is_pressed():
-				print("field pos: ", field_pos)
+#				print("field pos: ", field_pos)
+#				print("is wall on sie: ", is_wall_on_side(get_field_side()))
 				board.place_wall(self, get_field_side())
 		
 func get_field_side():
@@ -42,10 +42,35 @@ func get_field_side():
 	
 	#The following if statements check for each triangle, whether the y and x coordinates of the mouse are coordinates that could be in that triangle.
 	if mouse_y <= (int(x + indicator*mouse_x) % int(x)) * (y/x):
-		return field_side.TOP
-	elif mouse_y >= y - (int(x + indicator*mouse_x) % int(x)) * (y/x):
-		return field_side.BOTTOM
-	elif mouse_x < x/2 and y - mouse_x * (y/x) > mouse_y and mouse_y > mouse_x * (y/x):
-		return field_side.LEFT
+		return FieldSide.TOP
 	elif mouse_x > x/2 and y - mouse_x * (y/x) < mouse_y and mouse_y < mouse_x * (y/x):
-		return field_side.RIGHT
+		return FieldSide.RIGHT
+	elif mouse_y >= y - (int(x + indicator*mouse_x) % int(x)) * (y/x):
+		return FieldSide.BOTTOM
+	elif mouse_x < x/2 and y - mouse_x * (y/x) > mouse_y and mouse_y > mouse_x * (y/x):
+		return FieldSide.LEFT
+		
+func is_wall_on_side(field_side):
+	match field_side:
+		FieldSide.TOP:
+			for w in board.walls.get_children():
+#				print("wall rot: ",w.rotation)
+				if w.rotation == 0:
+#					print("wall pos: ",w.wall_pos)
+					if w.wall_pos == field_pos - Vector2(0, 1) or w.wall_pos == field_pos - Vector2(1, 1):
+						return true
+		FieldSide.RIGHT:
+			for w in board.walls.get_children():
+				if w.rotation == 90:
+					if w.wall_pos == field_pos - Vector2(0, 0) or w.wall_pos == field_pos - Vector2(0, 1):
+						return true
+		FieldSide.BOTTOM:
+			for w in board.walls.get_children():
+				if w.rotation == 0:
+					if w.wall_pos == field_pos - Vector2(0, 0) or w.wall_pos == field_pos - Vector2(1, 0):
+						return true
+		FieldSide.LEFT:	
+			for w in board.walls.get_children():
+				if w.rotation == 90:
+					if w.wall_pos == field_pos - Vector2(1, 0) or w.wall_pos == field_pos - Vector2(1, 1):
+						return true

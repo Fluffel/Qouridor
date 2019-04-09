@@ -13,9 +13,21 @@ _global_script_classes=[ {
 "class": "AContainer",
 "language": "GDScript",
 "path": "res://addons/AContainer.gd"
+}, {
+"base": "Node",
+"class": "FieldSide",
+"language": "GDScript",
+"path": "res://Singletons/EnumFieldSide.gd"
+}, {
+"base": "Node",
+"class": "Move",
+"language": "GDScript",
+"path": "res://Singletons/EnumMove.gd"
 } ]
 _global_script_class_icons={
-"AContainer": ""
+"AContainer": "",
+"FieldSide": "",
+"Move": ""
 }
 
 [application]
