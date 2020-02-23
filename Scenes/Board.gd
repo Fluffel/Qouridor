@@ -1,4 +1,4 @@
-extends Control
+extends AContainer
 
 onready var grid = get_node("Grid")
 onready var walls = get_node("Walls")
@@ -76,6 +76,8 @@ func viable_wall_position(field, field_side, wall):
 				return false
 
 func _on_Board_resized():
+	yield(get_node("Grid"), "sort_children")
+	
 	for p in players.get_children():
 		p.update_transformation()
 	for w in walls.get_children():

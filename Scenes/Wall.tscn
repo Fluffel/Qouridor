@@ -5,4 +5,3 @@
 [node name="Node2D" type="ColorRect"]
 color = Color( 0.623529, 0.321569, 0.321569, 1 )
 script = ExtResource( 1 )
-

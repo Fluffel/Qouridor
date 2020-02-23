@@ -18,7 +18,7 @@ func place_wall(wall):
 	board.walls.add_child(wall)
 	amount_walls -= 1
 	print("p: ", get_index(), " ", "amount walls left: ", amount_walls)
-	main.change_turn()
+	main.change_turn(ActionType.wall, wall.wall_pos)
 	
 func move(direction):
 	var new_location = do_move(direction, self.player_pos)
@@ -36,7 +36,8 @@ func move(direction):
 	if new_location == get_opponent().player_pos:
 		new_location = do_move(direction, new_location)
 	self.player_pos = new_location
-	main.change_turn()
+	
+	main.change_turn(ActionType.move, new_location)
 	
 func do_move(direction, loc):
 	match direction:

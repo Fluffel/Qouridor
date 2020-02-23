@@ -22,7 +22,9 @@ func _notification(what):
 					ofs.x = (rect_size.x - size.x) / 2.0 #hoffe das findest du lustig... und hoffe du weist was ich meine hint: 2.0
 			
 				
-			fit_child_in_rect(c,Rect2(ofs, size))
+			fit_child_in_rect(c, Rect2(ofs, size))
+			
+			
 			
 func update_aspect(new_val):
 	aspect = new_val
