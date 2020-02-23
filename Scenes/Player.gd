@@ -35,9 +35,11 @@ func move(direction):
 	#jump over opponent when landing on him
 	if new_location == get_opponent().player_pos:
 		new_location = do_move(direction, new_location)
+		
+	var old_location = self.player_pos
 	self.player_pos = new_location
 	
-	main.change_turn(ActionType.move, new_location)
+	main.change_turn(ActionType.move, old_location)
 	
 func do_move(direction, loc):
 	match direction:
