@@ -9,6 +9,7 @@ export var grid_h_v_separation = 10
 export var board_dimension = 9 #MUST BE UNEQUAL
 
 
+
 #signal added_players
 
 func _ready():

@@ -9,10 +9,13 @@ var board_pos
 
 export var amount_walls = 10
 
+export var color1 =Color()
+export var color2 = Color()
+
 func _ready():
 	if main.current_player == null:
 		main.current_player = 0
-	color = Color(randi())
+	set_player_color()
 
 func place_wall(wall):
 	board.walls.add_child(wall)
@@ -62,6 +65,11 @@ func set_player_pos(new_pos):
 	player_pos = new_pos
 	update_transformation()
 	
+func set_player_color():
+	if get_index() == 0:
+		color = color1
+	else:
+		color = color2
 
 func update_transformation():
 	var field_example = board.grid.get_child(0)

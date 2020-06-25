@@ -10,4 +10,8 @@ rect_min_size = Vector2( 50, 50 )
 mouse_filter = 2
 color = Color( 0, 0.470588, 1, 1 )
 script = ExtResource( 1 )
-
+__meta__ = {
+"_edit_use_anchors_": false
+}
+color1 = Color( 0.117647, 0.309804, 0.678431, 1 )
+color2 = Color( 0.615686, 0.0666667, 0.337255, 1 )
