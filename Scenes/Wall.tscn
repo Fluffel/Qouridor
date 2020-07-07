@@ -3,5 +3,9 @@
 [ext_resource path="res://Scenes/Wall.gd" type="Script" id=1]
 
 [node name="Node2D" type="ColorRect"]
-color = Color( 0.623529, 0.321569, 0.321569, 1 )
+mouse_filter = 2
+color = Color( 0.54902, 1, 0.509804, 0.658824 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

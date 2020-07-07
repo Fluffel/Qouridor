@@ -5,19 +5,26 @@ onready var board = get_node("/root/Main/Board")
 
 var activated = false #if activated it will create a wall when right clicked 
 var field_pos = Vector2() #the position will be from 1 to 9 into x and y direction where on step is one field
+var mouse_field_side
 
+
+signal field_side_changed(field, field_side)
 
 
 func _ready():
+	set_process(activated)
 	connect("mouse_entered", self, "_mouse_entered")
 	connect("mouse_exited", self, "_mouse_exited")
 
 func _mouse_entered():
+	print("mouse entered")
 	activated = true
+	emit_signal("field_side_changed", self, get_field_side())
+	set_process(activated)
 	
 func _mouse_exited():
 	activated = false
-	
+	set_process(activated)
 func _input(event):
 	
 	if activated:
@@ -74,3 +81,10 @@ func is_wall_on_side(field_side):
 				if w.rotation == 90:
 					if w.wall_pos == field_pos - Vector2(1, 0) or w.wall_pos == field_pos - Vector2(1, 1):
 						return true
+
+func _process(_delta):
+	var new_side = get_field_side()
+	if mouse_field_side != new_side:
+		print("changed field: ", new_side, ", ", mouse_field_side)
+		mouse_field_side = new_side
+		emit_signal("field_side_changed", self, mouse_field_side)
