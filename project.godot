@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Move",
 "language": "GDScript",
 "path": "res://Singletons/EnumMove.gd"
+}, {
+"base": "Node",
+"class": "WayFinder",
+"language": "GDScript",
+"path": "res://Singletons/WayFinderAlgo.gd"
 } ]
 _global_script_class_icons={
 "AContainer": "",
 "ActionType": "",
 "FieldSide": "",
-"Move": ""
+"Move": "",
+"WayFinder": ""
 }
 
 [application]

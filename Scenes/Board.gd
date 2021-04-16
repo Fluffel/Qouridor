@@ -96,6 +96,7 @@ func viable_wall_position(field_side, wall):
 			if (wall.wall_pos + Vector2(0, 1) == w.wall_pos or wall.wall_pos - Vector2(0, 1) == w.wall_pos) and w.rotation == 90:
 				return false
 				
+#	does the wall leave a way for each player to the other side
 	return true
 	
 func _on_Board_resized():
